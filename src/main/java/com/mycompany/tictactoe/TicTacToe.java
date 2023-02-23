@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.ticktacktow;
+package com.mycompany.tictactoe;
 
 /**
  *
  * @author student
  */
-public class TickTackTow {
+public class TicTacToe {
     
     
     public static void main(String[] args) {
