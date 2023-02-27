@@ -27,12 +27,33 @@ public class TicFrame extends javax.swing.JFrame {
     
     private void onClick(java.awt.event.ActionEvent evt){
         JButton button = (JButton)evt.getSource();
-        String player = (this.whoseTurn) ? "X" : "0";
+        String player = (this.whoseTurn) ? "*" : "0";
         
         if (button != null && button.getText().equals("")){
             button.setText(player);
             this.whoseTurn = !this.whoseTurn;
         }  
+    }
+    
+    private void findWinner(){
+        String[][] status = new String[3][3];
+        status[0][0] = jButton1.getText();
+        status[0][1] = jButton2.getText();
+        status[0][2] = jButton3.getText();
+        status[1][0] = jButton4.getText();
+        status[1][1] = jButton5.getText();
+        status[1][2] = jButton6.getText();
+        status[2][0] = jButton7.getText();
+        status[2][1] = jButton8.getText();
+        status[2][2] = jButton9.getText();
+        
+        for (int i = 0; i < status.length; i++){
+            for (int j = 0; i < status[0].length; j++){
+                if(status[i][j] == "x"){
+                    
+                }
+            }
+        }
     }
 
     /**
