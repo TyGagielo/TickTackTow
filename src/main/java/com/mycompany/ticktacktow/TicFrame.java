@@ -14,12 +14,14 @@ import javax.swing.JButton;
 public class TicFrame extends javax.swing.JFrame {
 
     boolean whoseTurn;
+    boolean gameON;
     
     /**
      * Creates new form TicFrame
      */
     public TicFrame() {
         initComponents();
+        this.gameON = true;
         this.whoseTurn = false;
     }
     
@@ -27,17 +29,25 @@ public class TicFrame extends javax.swing.JFrame {
     
     private void onClick(java.awt.event.ActionEvent evt){
         JButton button = (JButton)evt.getSource();
-        String player = (this.whoseTurn) ? "x" : "o";
         
-        if (button != null && button.getText().equals("")){
+        System.out.print(findWinner());
+        
+        if (this.gameON == true && button.getText().equals("")){
+            String winner = this.findWinner();
+            
+            if (!winner.equals("")){
+                jLabel1.setText(winner+"wins, yay");
+                this.gameON = false;
+            }
+            
+            String player = (this.whoseTurn) ? "x" : "o";
             button.setText(player);
+            
             this.whoseTurn = !this.whoseTurn;
-        } 
-        
-        findWinner();
+        }
     }
     
-    private void findWinner(){
+    private String findWinner(){
         String[][] status = new String[3][3];
         status[0][0] = jButton1.getText();
         status[0][1] = jButton2.getText();
@@ -52,20 +62,57 @@ public class TicFrame extends javax.swing.JFrame {
         int Xwin = 0;
         int Owin = 0;
         
+        int XwinTwo = 0;
+        int OwinTwo = 0;
+        
+        //check row
         for (int i = 0; i < status.length; i++){
+            Xwin = 0;
+            Owin = 0;
             for (int j = 0; j < status[0].length; j++){
+                
                 if(status[i][j].equals("x")){
                     Xwin++;
                 }
                 if(status[i][j].equals("o")){
                     Owin++;
                 }
-                
-                System.out.println(Xwin + ", " + Owin + "  ;  " + i + ", " + j);
             }
-            Xwin = 0;
-            Owin = 0;
         }
+        
+        //check Column
+        for (int i = 0; i < status[0].length; i++){
+            XwinTwo = 0;
+            OwinTwo = 0;
+            for (int j = 0; j < status.length; j++){
+                
+                if(status[j][i].equals("x")){
+                    XwinTwo++;
+                }
+                if(status[j][i].equals("o")){
+                    OwinTwo++;
+                }
+            }
+        }
+        
+        
+        // Check the diagonals
+        if (status[0][0].equals(status[1][1]) && status[0][0].equals(status[2][2]))
+          return status[0][0];
+        if (status[0][2].equals(status[1][1]) && status[0][2].equals(status[2][0]))
+          return status[0][2];
+        
+        
+        
+        //check Winner
+        if (Xwin == 3|| XwinTwo == 3){
+            return "x";
+        }
+        if (Owin == 3|| OwinTwo == 3){
+            return "o";
+        }
+        
+        return "";
     }
 
     /**
