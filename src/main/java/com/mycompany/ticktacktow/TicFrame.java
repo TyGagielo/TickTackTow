@@ -59,60 +59,34 @@ public class TicFrame extends javax.swing.JFrame {
         status[2][1] = jButton8.getText();
         status[2][2] = jButton9.getText();
         
-        int Xwin = 0;
-        int Owin = 0;
-        
-        int XwinTwo = 0;
-        int OwinTwo = 0;
-        
-        //check row
-        for (int i = 0; i < status.length; i++){
-            Xwin = 0;
-            Owin = 0;
-            for (int j = 0; j < status[0].length; j++){
-                
-                if(status[i][j].equals("x")){
-                    Xwin++;
-                }
-                if(status[i][j].equals("o")){
-                    Owin++;
-                }
-            }
+        // Check the rows and columns for a tic tac toe
+        for (int i=0; i<3; i++) {
+          if (status[i][0].equals(status[i][1]) && status[i][0].equals(status[i][2]))
+            return status[i][0];
+          if (status[0][i].equals(status[1][i]) && status[0][i].equals(status[2][i]))
+            return status[0][i];
         }
-        
-        //check Column
-        for (int i = 0; i < status[0].length; i++){
-            XwinTwo = 0;
-            OwinTwo = 0;
-            for (int j = 0; j < status.length; j++){
-                
-                if(status[j][i].equals("x")){
-                    XwinTwo++;
-                }
-                if(status[j][i].equals("o")){
-                    OwinTwo++;
-                }
-            }
-        }
-        
-        
+  
         // Check the diagonals
         if (status[0][0].equals(status[1][1]) && status[0][0].equals(status[2][2]))
           return status[0][0];
         if (status[0][2].equals(status[1][1]) && status[0][2].equals(status[2][0]))
           return status[0][2];
         
-        
-        
+        return "";
+    }
+    
+    private String whoWins(int x, int o){
         //check Winner
-        if (Xwin == 3|| XwinTwo == 3){
+        if (x == 3){
             return "x";
         }
-        if (Owin == 3|| OwinTwo == 3){
+        else if (o == 3){
             return "o";
         }
-        
-        return "";
+        else {
+            return "";
+        }
     }
 
     /**
