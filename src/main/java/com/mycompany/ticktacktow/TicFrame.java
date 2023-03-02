@@ -45,6 +45,8 @@ public class TicFrame extends javax.swing.JFrame {
     }
     
     private String findWinner(){
+        String winner = new String();
+        
         String[][] status = new String[3][3];
         status[0][0] = jButton1.getText();
         status[0][1] = jButton2.getText();
@@ -59,12 +61,13 @@ public class TicFrame extends javax.swing.JFrame {
         // Check the rows and columns for a tic tac toe
         for (int i=0; i<3; i++) {
           if (status[i][0].equals(status[i][1]) && status[i][0].equals(status[i][2]))
-            return status[i][0];
+            winner = status[i][0];
+          if (status[0][i].equals(status[1][i]) && status[0][i].equals(status[2][i]))
+            winner = status[0][i];
         }
         
-        for (int i = 0; i < 3; i++){
-          if (status[0][i].equals(status[1][i]) && status[0][i].equals(status[2][i]))
-            return status[0][i];
+        if (!winner.equals("")){
+            return winner;
         }
   
         // Check the diagonals
