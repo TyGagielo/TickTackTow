@@ -30,18 +30,15 @@ public class TicFrame extends javax.swing.JFrame {
     private void onClick(java.awt.event.ActionEvent evt){
         JButton button = (JButton)evt.getSource();
         
-        System.out.print(findWinner());
-        
         if (this.gameON == true && button.getText().equals("")){
+            String player = (this.whoseTurn) ? "x" : "o";
+            button.setText(player);
             String winner = this.findWinner();
             
             if (!winner.equals("")){
                 jLabel1.setText(winner+"wins, yay");
                 this.gameON = false;
             }
-            
-            String player = (this.whoseTurn) ? "x" : "o";
-            button.setText(player);
             
             this.whoseTurn = !this.whoseTurn;
         }
@@ -63,6 +60,9 @@ public class TicFrame extends javax.swing.JFrame {
         for (int i=0; i<3; i++) {
           if (status[i][0].equals(status[i][1]) && status[i][0].equals(status[i][2]))
             return status[i][0];
+        }
+        
+        for (int i = 0; i < 3; i++){
           if (status[0][i].equals(status[1][i]) && status[0][i].equals(status[2][i]))
             return status[0][i];
         }
@@ -74,19 +74,6 @@ public class TicFrame extends javax.swing.JFrame {
           return status[0][2];
         
         return "";
-    }
-    
-    private String whoWins(int x, int o){
-        //check Winner
-        if (x == 3){
-            return "x";
-        }
-        else if (o == 3){
-            return "o";
-        }
-        else {
-            return "";
-        }
     }
 
     /**
@@ -228,46 +215,55 @@ public class TicFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JButton button = (JButton)evt.getSource();
         onClick(evt);
+        findWinner();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         JButton button = (JButton)evt.getSource();
         onClick(evt);
+        findWinner();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         JButton button = (JButton)evt.getSource();
         onClick(evt);
+        findWinner();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         JButton button = (JButton)evt.getSource();
         onClick(evt);
+        findWinner();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         JButton button = (JButton)evt.getSource();
         onClick(evt);
+        findWinner();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         JButton button = (JButton)evt.getSource();
         onClick(evt);
+        findWinner();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         JButton button = (JButton)evt.getSource();
         onClick(evt);
+        findWinner();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         JButton button = (JButton)evt.getSource();
         onClick(evt);
+        findWinner();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         JButton button = (JButton)evt.getSource();
         onClick(evt);
+        findWinner();
     }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
