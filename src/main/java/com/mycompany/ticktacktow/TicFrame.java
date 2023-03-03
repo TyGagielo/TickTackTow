@@ -76,6 +76,16 @@ public class TicFrame extends javax.swing.JFrame {
         if (status[0][2].equals(status[1][1]) && status[0][2].equals(status[2][0]))
           return status[0][2];
         
+        int isFull = 0;
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j < 3; j++){
+                if (!status[i][j].equals("")){isFull++;}
+            }
+        }
+        if (isFull == 9){
+            return "Tie Game    ";
+        }
+        
         return "";
     }
 
